@@ -1,9 +1,8 @@
 function [Y,As,Mf_emit] = MOL_single_even_par_modal(Dm, Km, dm, N, hm, Am, V, Q, Kpa, TSP, T, IC)
 %% Method of Lines (MOL) discretization of a 1-D diffusional source
-% Only a single diffusional source material. 
+% A single diffusional source material. 
 % Even discretization. 
-% Henri Gavin's treatment of boundary conditions. 
-% Ref: Henri P. Gavin, Duke Univ., MOL-notes-HPG-20160824.pdf
+% Huang's even method.
 % Initial condition is a (N-1)*1 vector in which the last row is 0 and the
   ... other rows are C0.
 % Generates result Y, which is a (N+1)*(Nt+1) matrix that contains the...
@@ -12,7 +11,7 @@ function [Y,As,Mf_emit] = MOL_single_even_par_modal(Dm, Km, dm, N, hm, Am, V, Q,
 
 
 %% Calculate parameters
-dy = dm/(N-1);   % Thickness of each layer, "delta y" (m)
+dy = dm/(N-1);   % Thickness of each layer (m)
 L = Am/V;
 
 

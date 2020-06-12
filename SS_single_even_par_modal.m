@@ -1,7 +1,8 @@
 function [Y,As,Mf_emit] = SS_single_even_par_modal(Dm, Km, dm, N, hm, Am, V, Q, Kpa, TSP, T, IC)
 %% State-space (SS) discretization of a 1-D diffusional source
-% Only a single diffusional source material. 
+% A single diffusional source material. 
 % Even discretization. 
+% Yan's even method.
 % Ref: W Yan, Y Zhang, X Wang, 2009, 
   ...Simulation of VOC emissions from building materials by using the state-space method
   ...Building andEnvironment 44(2009)471–478
@@ -11,7 +12,7 @@ function [Y,As,Mf_emit] = SS_single_even_par_modal(Dm, Km, dm, N, hm, Am, V, Q, 
   
 
 %% Calculate parameters
-dy = dm/(N-1);   % Thickness of each layer, "delta y" (m)
+dy = dm/(N-1);   % Thickness of each layer (m)
 
 
 %% Construct the system of ODEs

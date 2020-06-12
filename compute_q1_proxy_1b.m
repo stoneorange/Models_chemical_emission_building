@@ -1,5 +1,9 @@
 function q1 = compute_q1_proxy_1b(L,D,K,hm_corrected)
-% Calculates q1_proxy using explicit equations.
+% Calculates q1_proxy using explicit equations, as defined in [1] by eq 17.
+
+% References
+% [1] Huang, L. and O. Jolliet (2016). "A parsimonious model for the release
+% of chemicals encapsulated in products." Atmospheric Environment 127: 223-235.
 
     x = hm_corrected*L/(D*K);
     

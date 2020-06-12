@@ -1,6 +1,10 @@
 function Memit = compute_me(C0,Q,V,A,L,D,qn,An,t)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+    %     Computes the cumulative mass emitted from the material to air, as
+    %     defined in [1] eq 15.
+    %
+    %   REFERENCES
+    %   [1] Deng, B. and C. N. Kim (2004). "An analytical model for VOCs 
+    %   emission from dry building materials." Atmospheric Environment 38(8): 1173-1180.
     
     alpha = Q * L^2 / (D * V) ;
     

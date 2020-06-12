@@ -1,9 +1,8 @@
  function [Y,As,Mf_emit,Mf_emit_decom,C_air_avg] = MOL_single_uneven_q_2_par_modal(Dm, Km, dm, N, hm, Am, V, Q, Kpa, TSP, T, IC)
 %% Method of Lines (MOL) discretization of a 1-D diffusional source
-% Only a single diffusional source material. 
+% A single diffusional source material. 
 % Uneven discretization with a thickness ratio of 2 between two adjacent layers.
-% Apdated from Henri Gavin's treatment of boundary conditions. 
-% Ref: Lei Huang, MOL-uneven-notes-LH-20190814.pdf
+% Huang's uneven method.
 % Initial condition is a (N-1)*1 vector in which the first row is 0 and the
   ... other rows are C0.
 % Generates result Y, which is a (N+1)*(Nt+1) matrix that contains the...
@@ -13,7 +12,7 @@
 
 %% Calculate parameters
 q = 2;
-dy = dm*(1-q)/(1-q^(N-1));   % Thickness of the first layer, "delta y" (m)
+dy = dm*(1-q)/(1-q^(N-1));   % Thickness of the first layer (m)
 
 
 %% Construct the system of ODEs
@@ -52,11 +51,6 @@ Ds = zeros(N+1,1);
 
 %% Solve the system of ODEs   
 [X,Ve] = eig(As);     % solve the eigen-value probem, X=eig-vecs, V=eig-vals
-% for i = 1:size(As,1)
-%     if Ve(i,i) > 0
-%         Ve(i,i) = -1e30;
-%     end
-% end
 Ve = diag(Ve);        % a vector of eig-vals
 q0 = X \ IC;        % initial conditions in modal coordinates
 xm = NaN(size(As,1),length(T));      % initialize modal superposition solution array

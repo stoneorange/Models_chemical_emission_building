@@ -3,7 +3,9 @@ function [ Mf_emit_end, C_air] = Sim_Little_model_no_sorption_par( hm,Am,dm,Km,Q
 % building material is constant, and no sorption on other indoor surfaces.
 % Adapted from Little et al., 2012.
 
-% Ref: https://en.wikipedia.org/wiki/Matrix_differential_equation
+% Ref: Little, J. C., et al. (2012). "Rapid methods to estimate potential 
+% exposure to semivolatile organic compounds in the indoor environment." 
+% Environmental Science & Technology 46(20): 11171-11178.
 
 C_air = Am*hm*C0/Km/(Am*hm/(1+Kpa*TSP)+Q);
 

@@ -1,8 +1,9 @@
 function [Y,As,Mf_emit] = SS_single_uneven_Guo_par_modal(Dm, Km, dm, N, q, hm, Am, V, Q, Kpa, TSP, T, IC)
 %% State-space (SS) discretization of a 1-D diffusional source
-% Only a single diffusional source material. 
+% A single diffusional source material. 
 % First layer is set to alpha=1e-7 m by default and the first node is at the surface, then the material thickness (dm-1e-7) is unevenly
-% discretized into (N-1) nodes situated at the middle of the (N-1) layers 
+% discretized into (N-1) nodes situated at the middle of the (N-1) layers.
+% Guo's uneven method.
 
 % Ref: 
 %  Z Guo, 2013,
@@ -14,8 +15,8 @@ function [Y,As,Mf_emit] = SS_single_uneven_Guo_par_modal(Dm, Km, dm, N, q, hm, A
 %   Building and Environment 44(2009)471–478
 
 %% Calculate parameters
-alpha=1e-7; % Thickness of the first layer, (m)
-dy = (dm-alpha)*(1-q)/(1-q^(N-2));   % Thickness of the second layer, "delta y" (m)
+alpha=1e-7; % Thickness of the first layer (m)
+dy = (dm-alpha)*(1-q)/(1-q^(N-2));   % Thickness of the second layer (m)
 
 %% Construct the system of ODEs 
 P = zeros(N-4,N-2);
